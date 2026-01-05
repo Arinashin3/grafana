@@ -376,13 +376,6 @@ export function getAppRoutes(): RouteDescriptor[] {
         () => import(/* webpackChunkName: "ServerStats" */ 'app/features/admin/ServerStats')
       ),
     },
-    config.cloudMigrationEnabled && {
-      path: '/admin/migrate-to-cloud',
-      roles: () => contextSrv.evaluatePermission([AccessControlAction.MigrationAssistantMigrate]),
-      component: SafeDynamicImport(
-        () => import(/* webpackChunkName: "MigrateToCloud" */ 'app/features/migrate-to-cloud/MigrateToCloud')
-      ),
-    },
     // LOGIN / SIGNUP
     {
       path: '/login',

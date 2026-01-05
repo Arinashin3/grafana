@@ -1,35 +1,89 @@
-<svg width="2261" height="1272" viewBox="0 0 2261 1272" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g clip-path="url(#clip0)">
-<rect width="2261" height="1272" fill="#FFD597"/>
-<rect x="-30" y="-20" width="2323" height="1322" fill="url(#paint0_radial)"/>
-<ellipse opacity="0.35" cx="1748.5" cy="1502" rx="1939.5" ry="1883" fill="url(#paint1_radial)"/>
-<ellipse opacity="0.25" cx="667.848" cy="992.07" rx="1440.5" ry="859.066" transform="rotate(-24.1241 667.848 992.07)" fill="url(#paint2_radial)"/>
-<ellipse opacity="0.25" cx="-151.263" cy="339.631" rx="1440.5" ry="859.066" transform="rotate(23.8185 -151.263 339.631)" fill="url(#paint3_radial)"/>
-<ellipse opacity="0.3" cx="-362" cy="30" rx="788" ry="789" transform="rotate(90 -362 30)" fill="url(#paint4_radial)"/>
-</g>
-<defs>
-<radialGradient id="paint0_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(712.271 -19.9999) rotate(90) scale(1613.94 2836)">
-<stop stop-color="#F4F4F4"/>
-<stop offset="1" stop-color="#979797"/>
-</radialGradient>
-<radialGradient id="paint1_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1748.5 1502) rotate(90) scale(1883 1939.5)">
-<stop stop-color="#1C78FF"/>
-<stop offset="1" stop-color="#DA81DA" stop-opacity="0"/>
-</radialGradient>
-<radialGradient id="paint2_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(667.848 992.07) rotate(90) scale(859.066 1440.5)">
-<stop stop-color="#D65CD6"/>
-<stop offset="1" stop-color="#FF5BB4" stop-opacity="0"/>
-</radialGradient>
-<radialGradient id="paint3_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(-151.263 339.631) rotate(90) scale(859.066 1440.5)">
-<stop stop-color="#FBC55A"/>
-<stop offset="1" stop-color="#FBC55A" stop-opacity="0"/>
-</radialGradient>
-<radialGradient id="paint4_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(-362 30.0001) rotate(90) scale(789 788)">
-<stop stop-color="#FFBE3E"/>
-<stop offset="1" stop-color="#FFBB8A" stop-opacity="0"/>
-</radialGradient>
-<clipPath id="clip0">
-<rect width="2261" height="1272" fill="white"/>
-</clipPath>
-</defs>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="3840" height="2160" viewBox="0 0 3840 2160">
+  <defs>
+    <!-- Background gradient -->
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%"  stop-color="#071427"/>
+      <stop offset="45%" stop-color="#0a1e3a"/>
+      <stop offset="100%" stop-color="#061022"/>
+    </linearGradient>
+
+    <!-- Vignette -->
+    <radialGradient id="vignette" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#000000" stop-opacity="0"/>
+      <stop offset="70%" stop-color="#000000" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.45"/>
+    </radialGradient>
+
+    <!-- Arch official-like logo gradient -->
+    <linearGradient id="archOfficial" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="35%" stop-color="#aeefff"/>
+      <stop offset="70%" stop-color="#33b1e6"/>
+      <stop offset="100%" stop-color="#1793d1"/>
+    </linearGradient>
+
+    <!-- Stronger clean glow -->
+    <filter id="glow" x="-70%" y="-70%" width="240%" height="240%">
+      <feGaussianBlur stdDeviation="22" result="blur"/>
+      <feColorMatrix in="blur" type="matrix"
+        values="1 0 0 0 0
+                0 1 0 0 0.35
+                0 0 1 0 0.55
+                0 0 0 0.9 0"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Noise -->
+    <filter id="noise" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3"/>
+      <feColorMatrix type="matrix"
+        values="0 0 0 0 0
+                0 0 0 0 0
+                0 0 0 0 0
+                0 0 0 0.12 0"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="3840" height="2160" fill="url(#bg)"/>
+  <rect width="3840" height="2160" fill="url(#vignette)"/>
+  <rect width="3840" height="2160" filter="url(#noise)" opacity="0.5"/>
+
+  <!-- Arch logo -->
+  <g transform="translate(1920 1100) scale(6.2)" filter="url(#glow)">
+    <!-- Outer shape -->
+    <path fill="url(#archOfficial)" d="
+      M 0 -190
+      C -18 -148, -34 -112, -55 -76
+      C -82 -28, -116 16, -155 56
+      C -128 60, -104 68, -78 82
+      C -56 94, -38 110, -24 130
+      C -10 152, -2 176, 0 200
+      C 2 176, 10 152, 24 130
+      C 38 110, 56 94, 78 82
+      C 104 68, 128 60, 155 56
+      C 116 16, 82 -28, 55 -76
+      C 34 -112, 18 -148, 0 -190
+      Z" />
+
+    <!-- Inner cut -->
+    <path fill="#061022" opacity="0.97" d="
+      M 0 -115
+      C -14 -88, -26 -63, -41 -39
+      C -60 -9, -85 21, -112 42
+      C -92 48, -76 57, -62 70
+      C -46 86, -36 105, -30 126
+      C -24 150, -16 175, 0 200
+      C 16 175, 24 150, 30 126
+      C 36 105, 46 86, 62 70
+      C 76 57, 92 48, 112 42
+      C 85 21, 60 -9, 41 -39
+      C 26 -63, 14 -88, 0 -115
+      Z" />
+  </g>
 </svg>
+

@@ -123,31 +123,31 @@ func (s *ServiceImpl) GetNavTree(c *contextmodel.ReqContext, prefs *pref.Prefere
 		treeRoot.AddSection(dashboardLink)
 	}
 
-	if s.cfg.ExploreEnabled && hasAccess(ac.EvalPermission(ac.ActionDatasourcesExplore)) {
-		treeRoot.AddSection(&navtree.NavLink{
-			Text:       "Explore",
-			Id:         navtree.NavIDExplore,
-			SubTitle:   "Explore your data",
-			Icon:       "compass",
-			SortWeight: navtree.WeightExplore,
-			Url:        s.cfg.AppSubURL + "/explore",
-		})
-	}
+	//if s.cfg.ExploreEnabled && hasAccess(ac.EvalPermission(ac.ActionDatasourcesExplore)) {
+	//	treeRoot.AddSection(&navtree.NavLink{
+	//		Text:       "Explore",
+	//		Id:         navtree.NavIDExplore,
+	//		SubTitle:   "Explore your data",
+	//		Icon:       "compass",
+	//		SortWeight: navtree.WeightExplore,
+	//		Url:        s.cfg.AppSubURL + "/explore",
+	//	})
+	//}
 
-	if hasAccess(ac.EvalPermission(ac.ActionDatasourcesExplore)) {
-		treeRoot.AddSection(&navtree.NavLink{
-			Text:       "Drilldown",
-			Id:         navtree.NavIDDrilldown,
-			SubTitle:   "Drill down into your data using Grafana's powerful queryless apps",
-			Icon:       "drilldown",
-			SortWeight: navtree.WeightDrilldown,
-			Url:        s.cfg.AppSubURL + "/drilldown",
-		})
-	}
+	//if hasAccess(ac.EvalPermission(ac.ActionDatasourcesExplore)) {
+	//	treeRoot.AddSection(&navtree.NavLink{
+	//		Text:       "Drilldown",
+	//		Id:         navtree.NavIDDrilldown,
+	//		SubTitle:   "Drill down into your data using Grafana's powerful queryless apps",
+	//		Icon:       "drilldown",
+	//		SortWeight: navtree.WeightDrilldown,
+	//		Url:        s.cfg.AppSubURL + "/drilldown",
+	//	})
+	//}
 
-	if s.cfg.ProfileEnabled && c.IsSignedIn {
-		treeRoot.AddSection(s.getProfileNode(c))
-	}
+	//if s.cfg.ProfileEnabled && c.IsSignedIn {
+	//	treeRoot.AddSection(s.getProfileNode(c))
+	//}
 
 	_, uaIsDisabledForOrg := s.cfg.UnifiedAlerting.DisabledOrgs[c.GetOrgID()]
 	uaVisibleForOrg := s.cfg.UnifiedAlerting.IsEnabled() && !uaIsDisabledForOrg

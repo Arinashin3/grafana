@@ -104,12 +104,6 @@
       "update-button": "Update",
       "users-heading": "Organization users"
     },
-    "enterprise-auth-features-card": {
-      "dismiss": "Dismiss",
-      "heading": "Enterprise authentication",
-      "learn-more-link": "Learn more",
-      "text": "Manage users, teams, and permissions automatically with <strong>SAML</strong>, <strong>SCIM</strong>, <strong>LDAP</strong>, and <strong>RBAC</strong> — available in Grafana Cloud and Enterprise."
-    },
     "feature-listing": {
       "title-auditing": "Auditing",
       "title-custom-branding": "Custom branding",
@@ -233,7 +227,7 @@
       "year-round-support": "24 × 7 × 365 support via"
     },
     "settings": {
-      "info-description": "These system settings are defined in grafana.ini or custom.ini (or overridden in ENV variables). To change these you currently need to restart Grafana."
+      "info-description": "These system settings are defined in defaults.ini or custom.ini (or overridden in ENV variables). To change these you currently need to restart App."
     },
     "un-themed-org-row": {
       "confirmText-confirm-removal": "Confirm removal"
@@ -10617,7 +10611,7 @@
       "title": "Users and access"
     },
     "config-general": {
-      "subtitle": "Manage default preferences and settings across Grafana",
+      "subtitle": "Manage default preferences and settings",
       "title": "General"
     },
     "config-plugins": {
@@ -10686,7 +10680,7 @@
       "title": "Organizations"
     },
     "global-users": {
-      "subtitle": "Manage users in Grafana",
+      "subtitle": "Manage users",
       "title": "Users"
     },
     "grafana-quaderno": {
@@ -10743,10 +10737,6 @@
     },
     "manage-folder": {
       "subtitle": "Manage folder dashboards and permissions"
-    },
-    "migrate-to-cloud": {
-      "subtitle": "Copy resources from your self-managed installation to a cloud stack",
-      "title": "Migrate to Grafana Cloud"
     },
     "monitoring": {
       "subtitle": "Out-of-the-box observability solutions",
@@ -10812,7 +10802,7 @@
       "title": "Search dashboards"
     },
     "server-settings": {
-      "subtitle": "View the settings defined in your Grafana config",
+      "subtitle": "View the settings defined in your App config",
       "title": "Settings"
     },
     "service-accounts": {
@@ -10865,7 +10855,8 @@
       "title": "Testing & synthetics"
     },
     "upgrading": {
-      "title": "Stats and license"
+      "title": "Stats",
+      "subtitle": "App Status"
     },
     "users": {
       "subtitle": "Invite and assign roles to users",
