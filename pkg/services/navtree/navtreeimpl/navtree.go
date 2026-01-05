@@ -87,22 +87,22 @@ func (s *ServiceImpl) GetNavTree(c *contextmodel.ReqContext, prefs *pref.Prefere
 
 	treeRoot.AddSection(s.getHomeNode(c, prefs))
 
-	if hasAccess(ac.EvalPermission(dashboards.ActionDashboardsRead)) {
-		starredItemsLinks, err := s.buildStarredItemsNavLinks(c)
-		if err != nil {
-			return nil, err
-		}
-
-		treeRoot.AddSection(&navtree.NavLink{
-			Text:           "Starred",
-			Id:             "starred",
-			Icon:           "star",
-			SortWeight:     navtree.WeightSavedItems,
-			Children:       starredItemsLinks,
-			EmptyMessageId: "starred-empty",
-			Url:            s.cfg.AppSubURL + "/dashboards?starred",
-		})
-	}
+	//if hasAccess(ac.EvalPermission(dashboards.ActionDashboardsRead)) {
+	//	starredItemsLinks, err := s.buildStarredItemsNavLinks(c)
+	//	if err != nil {
+	//		return nil, err
+	//	}
+	//
+	//	treeRoot.AddSection(&navtree.NavLink{
+	//		Text:           "Starred",
+	//		Id:             "starred",
+	//		Icon:           "star",
+	//		SortWeight:     navtree.WeightSavedItems,
+	//		Children:       starredItemsLinks,
+	//		EmptyMessageId: "starred-empty",
+	//		Url:            s.cfg.AppSubURL + "/dashboards?starred",
+	//	})
+	//}
 
 	if c.IsPublicDashboardView() || hasAccess(ac.EvalAny(
 		ac.EvalPermission(dashboards.ActionFoldersRead), ac.EvalPermission(dashboards.ActionFoldersCreate),
@@ -149,14 +149,14 @@ func (s *ServiceImpl) GetNavTree(c *contextmodel.ReqContext, prefs *pref.Prefere
 	//	treeRoot.AddSection(s.getProfileNode(c))
 	//}
 
-	_, uaIsDisabledForOrg := s.cfg.UnifiedAlerting.DisabledOrgs[c.GetOrgID()]
-	uaVisibleForOrg := s.cfg.UnifiedAlerting.IsEnabled() && !uaIsDisabledForOrg
-
-	if uaVisibleForOrg {
-		if alertingSection := s.buildAlertNavLinks(c); alertingSection != nil {
-			treeRoot.AddSection(alertingSection)
-		}
-	}
+	//_, uaIsDisabledForOrg := s.cfg.UnifiedAlerting.DisabledOrgs[c.GetOrgID()]
+	//uaVisibleForOrg := s.cfg.UnifiedAlerting.IsEnabled() && !uaIsDisabledForOrg
+	//
+	//if uaVisibleForOrg {
+	//	if alertingSection := s.buildAlertNavLinks(c); alertingSection != nil {
+	//		treeRoot.AddSection(alertingSection)
+	//	}
+	//}
 
 	if connectionsSection := s.buildDataConnectionsNavLink(c); connectionsSection != nil {
 		treeRoot.AddSection(connectionsSection)
@@ -185,17 +185,17 @@ func (s *ServiceImpl) GetNavTree(c *contextmodel.ReqContext, prefs *pref.Prefere
 		treeRoot.RemoveSectionByID(navtree.NavIDCfg)
 	}
 
-	if c.IsSignedIn {
-		treeRoot.AddSection(&navtree.NavLink{
-			Text:           "Bookmarks",
-			Id:             navtree.NavIDBookmarks,
-			Icon:           "bookmark",
-			SortWeight:     navtree.WeightBookmarks,
-			Children:       []*navtree.NavLink{},
-			EmptyMessageId: "bookmarks-empty",
-			Url:            s.cfg.AppSubURL + "/bookmarks",
-		})
-	}
+	//if c.IsSignedIn {
+	//	treeRoot.AddSection(&navtree.NavLink{
+	//		Text:           "Bookmarks",
+	//		Id:             navtree.NavIDBookmarks,
+	//		Icon:           "bookmark",
+	//		SortWeight:     navtree.WeightBookmarks,
+	//		Children:       []*navtree.NavLink{},
+	//		EmptyMessageId: "bookmarks-empty",
+	//		Url:            s.cfg.AppSubURL + "/bookmarks",
+	//	})
+	//}
 
 	return treeRoot, nil
 }
@@ -390,32 +390,32 @@ func (s *ServiceImpl) buildDashboardNavLinks(c *contextmodel.ReqContext) []*navt
 			})
 		}
 
-		dashboardChildNavs = append(dashboardChildNavs, &navtree.NavLink{
-			Text:     "Library panels",
-			SubTitle: "Reusable panels that can be added to multiple dashboards",
-			Id:       "dashboards/library-panels",
-			Url:      s.cfg.AppSubURL + "/library-panels",
-			Icon:     "library-panel",
-		})
-
-		if s.cfg.PublicDashboardsEnabled {
-			dashboardChildNavs = append(dashboardChildNavs, &navtree.NavLink{
-				Text: "Public dashboards",
-				Id:   "dashboards/public",
-				Url:  s.cfg.AppSubURL + "/dashboard/public",
-				Icon: "library-panel",
-			})
-		}
+		//dashboardChildNavs = append(dashboardChildNavs, &navtree.NavLink{
+		//	Text:     "Library panels",
+		//	SubTitle: "Reusable panels that can be added to multiple dashboards",
+		//	Id:       "dashboards/library-panels",
+		//	Url:      s.cfg.AppSubURL + "/library-panels",
+		//	Icon:     "library-panel",
+		//})
+		//
+		//if s.cfg.PublicDashboardsEnabled {
+		//	dashboardChildNavs = append(dashboardChildNavs, &navtree.NavLink{
+		//		Text: "Public dashboards",
+		//		Id:   "dashboards/public",
+		//		Url:  s.cfg.AppSubURL + "/dashboard/public",
+		//		Icon: "library-panel",
+		//	})
+		//}
 
 		//nolint:staticcheck // not yet migrated to OpenFeature
-		if s.features.IsEnabled(c.Req.Context(), featuremgmt.FlagRestoreDashboards) && (c.GetOrgRole() == org.RoleAdmin || c.IsGrafanaAdmin) {
-			dashboardChildNavs = append(dashboardChildNavs, &navtree.NavLink{
-				Text:     "Recently deleted",
-				SubTitle: "Any items listed here for more than 30 days will be automatically deleted.",
-				Id:       "dashboards/recently-deleted",
-				Url:      s.cfg.AppSubURL + "/dashboard/recently-deleted",
-			})
-		}
+		//if s.features.IsEnabled(c.Req.Context(), featuremgmt.FlagRestoreDashboards) && (c.GetOrgRole() == org.RoleAdmin || c.IsGrafanaAdmin) {
+		//	dashboardChildNavs = append(dashboardChildNavs, &navtree.NavLink{
+		//		Text:     "Recently deleted",
+		//		SubTitle: "Any items listed here for more than 30 days will be automatically deleted.",
+		//		Id:       "dashboards/recently-deleted",
+		//		Url:      s.cfg.AppSubURL + "/dashboard/recently-deleted",
+		//	})
+		//}
 	}
 
 	if hasAccess(ac.EvalPermission(dashboards.ActionDashboardsCreate)) {
