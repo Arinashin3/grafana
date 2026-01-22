@@ -145,9 +145,9 @@ func (s *ServiceImpl) GetNavTree(c *contextmodel.ReqContext, prefs *pref.Prefere
 	//	})
 	//}
 
-	//if s.cfg.ProfileEnabled && c.IsSignedIn {
-	//	treeRoot.AddSection(s.getProfileNode(c))
-	//}
+	if s.cfg.ProfileEnabled && c.IsSignedIn {
+		treeRoot.AddSection(s.getProfileNode(c))
+	}
 
 	//_, uaIsDisabledForOrg := s.cfg.UnifiedAlerting.DisabledOrgs[c.GetOrgID()]
 	//uaVisibleForOrg := s.cfg.UnifiedAlerting.IsEnabled() && !uaIsDisabledForOrg
